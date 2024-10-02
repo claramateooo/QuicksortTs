@@ -1,0 +1,33 @@
+function quickSort(arr: number[]): number[] {
+    
+    if (arr.length <= 1) {
+        return arr;
+    }
+
+
+    const pivote = arr[arr.length - 1];
+
+    const arrayIzquierda: number[] = [];
+    const arrayDerecha: number[] = [];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < pivote) {
+            arrayIzquierda.push(arr[i]);
+        } else {
+            arrayDerecha.push(arr[i]);
+        }
+    }
+
+ 
+    return [...quickSort(arrayIzquierda), pivote, ...quickSort(arrayDerecha)];
+}
+
+const arrayEjemplo: number[] = [60, 8, 22, 3, 5, 6];
+
+console.log("Array original:");
+console.log(arrayEjemplo);
+
+const arrayOrdenado = quickSort(arrayEjemplo);
+
+console.log("Array ordenado:");
+console.log(arrayOrdenado);
